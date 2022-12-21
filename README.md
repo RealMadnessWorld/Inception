@@ -15,4 +15,4 @@
 
 [Create a self-signed TLS certificate](https://www.linode.com/docs/guides/create-a-self-signed-tls-certificate/)
 
-[mlanca-c's wiki](https://github.com/mlanca-c/inception/wiki) (Best place to understand how this project works! Also check her [github](https://github.com/mlanca-c)!)
+[mlanca-c's wiki](https://github.com/mlanca-c/inception/wiki) (Best place to understand how this project works, everything is explained in detail there! Also check out [her github](https://github.com/mlanca-c)!)
