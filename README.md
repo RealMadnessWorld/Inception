@@ -7,6 +7,22 @@
 
 ---
 
+<div align=center>
+  <h2>
+    Step by step
+  </h2>
+</div>
+
+<h4>
+  Requirements:
+</h4>
+
+  - [x] docker
+  - [x] docker-compose
+
+
+---
+
 <h2 align=center>
   Resources
 </h2>
@@ -15,4 +31,7 @@
 
 [Create a self-signed TLS certificate](https://www.linode.com/docs/guides/create-a-self-signed-tls-certificate/)
 
-[mlanca-c's wiki](https://github.com/mlanca-c/inception/wiki) (Best place to understand how this project works, everything is explained in detail there! Also check out [her github](https://github.com/mlanca-c)!)
+[mlanca-c's wiki](https://github.com/mlanca-c/inception/wiki) (Best place to understand how this project works, everything is explained in detail there! Also check out [mlanca-c's github](https://github.com/mlanca-c)!)
+
+[Docker-compose build command](https://docs.docker.com/compose/compose-file/build/) (so that you can automatically create an image through a Dockerfile)
+
