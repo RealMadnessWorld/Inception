@@ -1,7 +1,11 @@
-FROM alpine:3.16
+FROM debian:buster
 
-RUN apk update
-RUN apk add nginx
-RUN adduser -g 'Nginx www user' -h /home/nginx/ nginx
+RUN apt-get update
+RUN apt-get install nginx -y
+RUN apt-get install openssl -y
+# RUN ufw allow 'Nginx HTTP'
 
-COPY index.html /usr/share/nginx/html
+RUN openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out MyCertificate.crt -keyout MyKey.key \
+-subj "/C=PT/ST=Lisboa/L=Lisboa/O=42Lisboa/OU=Inception/CN=www.jarsenio.42.fr"
+
+CMD nginx -g daemon off

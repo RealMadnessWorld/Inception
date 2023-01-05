@@ -1,9 +1,38 @@
 version: '3.7'
 
+network:
+  inception-network:
+    driver: bridge
+
 services:
-  mariadb:
-    image: ft_mariadb
-    ports: 3306:3306
-  environment:
-    MARIADB_ROOT_PASSWORD=$MARIADB_ROOT_PASSWORD
-    
+
+# Nginx image setup
+  nginx:
+    build: ./nginx
+    image: ft_nginx
+    ports:
+      - 8080:80
+    restart: always
+    network: inception-network
+
+# wordpress image setup
+  # wordpress:
+  #   build: ./wordpress
+  #   image: ft_wordpress
+  #   ports:
+  #     - 
+  #   restart: always
+  #   network: inception-network
+
+# Mariadb image setup
+  # mariadb:
+  #   build: ./mariadb
+  #   image: ft_mariadb
+  #   ports:
+  #     - 3306:3306
+  #   network: inception-network
+  # environment:
+  #   MARIADB_ROOT_PASSWORD=$MARIADB_ROOT_PASSWORD
+  #   MARIADB_USER=$MARIADB_USER
+  #   MARIADB_PASSWORD=$MARIADB_PASSWORD
+  #   MARIADB_DATABASE=$MARIADB_DATABASE
