@@ -1,9 +1,5 @@
 version: '3.7'
 
-network:
-  inception-network:
-    driver: bridge
-
 services:
 
 # Nginx image setup
@@ -13,7 +9,8 @@ services:
     ports:
       - 8080:80
     restart: always
-    network: inception-network
+    networks: 
+      - "inception-network"
 
 # wordpress image setup
   # wordpress:
@@ -36,3 +33,7 @@ services:
   #   MARIADB_USER=$MARIADB_USER
   #   MARIADB_PASSWORD=$MARIADB_PASSWORD
   #   MARIADB_DATABASE=$MARIADB_DATABASE
+
+networks:
+  inception-network:
+    driver: bridge
