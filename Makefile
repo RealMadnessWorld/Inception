@@ -14,7 +14,7 @@ endif
 
 all:	up
 
-up:
+up: setup_vols
 	@if [ -f ./srcs/.env ]; then \
 			docker network create inception-network; \
 			cd srcs && docker-compose up --build -d; \
@@ -25,7 +25,7 @@ up:
 			echo "$(_GREEN)-------------------------------------------$(_RESET)"; \
 			echo "$(_GREEN)-------------------------------------------$(_RESET)"; \
 		else \
-			echo "$(_GREEN)Missing .env file!$(_RESET)"; \
+			echo "$(_RED)Missing .env file!$(_RESET)"; \
 	fi
 
 down:
@@ -37,3 +37,15 @@ down:
 	@echo "$(_RED)----------------Docker down----------------$(_RESET)"
 	@echo "$(_RED)-------------------------------------------$(_RESET)"
 	@echo "$(_RED)-------------------------------------------$(_RESET)"
+
+delete: down del_vols
+
+setup_vols:
+	@sudo mkdir -p /home/flirt/data/mariadb_volume
+	@sudo mkdir -p /home/flirt/data/wordpress_volume
+	@echo volumes created
+
+del_vols:
+	@sudo rm -rf /home/flirt/data/mariadb_volume
+	@sudo rm -rf /home/flirt/data/wordpress_volume
+	@echo volumes deleted
