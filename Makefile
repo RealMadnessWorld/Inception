@@ -15,11 +15,25 @@ endif
 all:	up
 
 up:
-	@docker network create inception-network
-	@cd srcs && docker-compose up --build -d
-	@echo "$(_GREEN)-----docker up-----$(_RESET)"
+	@if [ -f ./srcs/.env ]; then \
+			docker network create inception-network; \
+			cd srcs && docker-compose up --build -d; \
+			cd ../tools && sudo bash hosts.sh add; \
+			echo "$(_GREEN)-------------------------------------------$(_RESET)"; \
+			echo "$(_GREEN)-------------------------------------------$(_RESET)"; \
+			echo "$(_GREEN)-----------------Docker up-----------------$(_RESET)"; \
+			echo "$(_GREEN)-------------------------------------------$(_RESET)"; \
+			echo "$(_GREEN)-------------------------------------------$(_RESET)"; \
+		else \
+			echo "$(_GREEN)Missing .env file!$(_RESET)"; \
+	fi
 
 down:
 	@docker network rm inception-network
 	@cd srcs && docker-compose down
-	@echo "$(_RED)-----docker down-----$(_RESET)"
+	@cd tools && sudo bash hosts.sh delete
+	@echo "$(_RED)-------------------------------------------$(_RESET)"
+	@echo "$(_RED)-------------------------------------------$(_RESET)"
+	@echo "$(_RED)----------------Docker down----------------$(_RESET)"
+	@echo "$(_RED)-------------------------------------------$(_RESET)"
+	@echo "$(_RED)-------------------------------------------$(_RESET)"

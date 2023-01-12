@@ -1,0 +1,90 @@
+##############################
+# Mariadb configuration file #
+##############################
+
+###
+# Server configurations
+###
+
+[server]
+
+# The [mysqld] section specifies options for the MariaDB server
+# Not to be confused with [mysql], that section specifies
+# options for the mysql command-line client.
+
+[mysqld]
+
+###
+# Main configurations
+###
+
+# The PID file specifies the location of the process ID file, which is used
+# to store the process ID of the MariaDB server.
+
+pid-file			= /etc/mysqld/mysqld.pid
+
+# The socket file specifies the location of the socket file, which is used
+# for interprocess communication (IPC) between the MariaDB server and client
+# programs.
+
+socket				= /etc/mysqld/mysqld.sock
+
+# The port number specifies the port number that the MariaDB server will
+# listen on for incoming connections.
+
+port				= 3306
+
+# The data directory specifies the location of the data directory, which is
+# used to store database files.
+
+datadir				= /var/lib/mysql
+
+basedir				= /usr
+tmpdir				= /tmp
+
+
+###
+# Log configurations
+###
+
+# the name the logs use when refering to mariadb
+
+log-basename		= mariadb
+
+# The "general-log" option enables or disables the general query log, which is
+# a log file that records all client connections and queries to the MariaDB server.
+# 0 = disabled, 1 = enabled
+
+general-log			= 1
+
+# Slow queries are queries that take a long time to execute, and they can be a
+# performance issue for a MariaDB server. The slow query log allows you to identify
+# slow queries and optimize them to improve the performance of the server.
+# 0 = disabled, 1 = enabled
+
+log-slow-queries	= 1
+
+# The "long_query_time" option specifies the number of seconds that a query must
+# take to execute in order to be considered slow and be logged in the slow query log.
+
+long_query_time		= 2
+
+
+###
+# Client configurations
+###
+
+# The [client] section specifies options for client programs, including the
+# port number and socket file.
+
+[client]
+
+# The port number specifies the port number that client programs will use
+# to connect to the MariaDB server.
+
+port				= 3306
+
+# The socket file specifies the location of the socket file that client
+# programs will use to connect to the MariaDB server.
+
+socket				= /etc/mysqld/mysqld.sock

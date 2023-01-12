@@ -4,35 +4,61 @@ services:
 
 # Nginx image setup
   nginx:
+    container_name: ft_nginx
     build: ./nginx
     image: ft_nginx
     ports:
       - 8080:80
-    restart: always
+    restart: on-failure
     networks: 
       - "inception-network"
 
 # wordpress image setup
-  # wordpress:
-  #   build: ./wordpress
-  #   image: ft_wordpress
-  #   ports:
-  #     - 
-  #   restart: always
-  #   network: inception-network
+  wordpress:
+    container_name: ft_wordpress
+    build: ./wordpress
+    image: ft_wordpress
+    # ports:
+    #   - 
+    restart: on-failure
+    networks:
+      - inception-network
 
 # Mariadb image setup
-  # mariadb:
-  #   build: ./mariadb
-  #   image: ft_mariadb
-  #   ports:
-  #     - 3306:3306
-  #   network: inception-network
-  # environment:
-  #   MARIADB_ROOT_PASSWORD=$MARIADB_ROOT_PASSWORD
-  #   MARIADB_USER=$MARIADB_USER
-  #   MARIADB_PASSWORD=$MARIADB_PASSWORD
-  #   MARIADB_DATABASE=$MARIADB_DATABASE
+  mariadb:
+    container_name: ft_mariadb
+    build: ./mariadb
+    image: ft_mariadb
+    ports:
+      - 3306:3306
+    restart: on-failure
+    networks:
+      - inception-network
+    volumes:
+      - mariadb_vol:/var/lib/db
+    environment:
+      MARIADB_ROOT_PASSWORD: $MARIADB_ROOT_PASSWORD
+      MARIADB_USER: $MARIADB_USER
+      MARIADB_PASSWORD: $MARIADB_PASSWORD
+      MARIADB_DATABASE: $MARIADB_DATABASE
+    # user: flirt
+
+volumes:
+  mariadb_vol:
+    name: mariadb_volume
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./volumes/mariadb
+
+  wordpress_vol:
+    name: wordpress_volume
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./volumes/wordpress
 
 networks:
   inception-network:

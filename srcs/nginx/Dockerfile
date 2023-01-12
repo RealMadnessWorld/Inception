@@ -1,6 +1,6 @@
 FROM debian:buster
 
-RUN apt-get update
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install nginx -y
 RUN apt-get install openssl -y
 # RUN ufw allow 'Nginx HTTP'
@@ -10,4 +10,4 @@ RUN openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/s
 
 COPY ./config/nginx.conf /etc/nginx/sites-available/
 
-CMD nginx -g daemon off
+CMD ["nginx", "-g", "daemon off;"]
