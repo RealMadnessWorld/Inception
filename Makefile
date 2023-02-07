@@ -30,7 +30,7 @@ up: setup_vols
 
 down:
 	@docker network rm inception-network
-	@cd srcs && docker-compose down
+	@cd srcs && docker-compose down --rmi all
 	@cd tools && sudo bash hosts.sh delete
 	@echo "$(_RED)-------------------------------------------$(_RESET)"
 	@echo "$(_RED)-------------------------------------------$(_RESET)"
@@ -40,6 +40,8 @@ down:
 
 delete: down del_vols
 
+re: down up
+
 setup_vols:
 	@sudo mkdir -p /home/flirt/data/mariadb_volume
 	@sudo mkdir -p /home/flirt/data/wordpress_volume
@@ -48,4 +50,17 @@ setup_vols:
 del_vols:
 	@sudo rm -rf /home/flirt/data/mariadb_volume
 	@sudo rm -rf /home/flirt/data/wordpress_volume
+	@sudo rm -rf /home/flirt/data
+	docker volume rm `docker volume ls -q` || true
+	docker rmi -f `docker image ls -qa` || true
+	docker rm `docker ps -qa` || true
 	@echo volumes deleted
+
+maria:
+	@docker exec -it ft_mariadb bash
+
+nginx:
+	@docker exec -it ft_nginx bash
+
+wordpress:
+	@docker exec -it ft_wordpress bash

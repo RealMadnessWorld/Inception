@@ -18,16 +18,22 @@
 # Main configurations
 ###
 
+user				= mysql
+
+# WARNING #
+# Both pid-file and socket need to be at "/run/mysqld/" otherwise you will have problems
+# You have been warned!
+
 # The PID file specifies the location of the process ID file, which is used
 # to store the process ID of the MariaDB server.
 
-pid-file			= /etc/mysqld/mysqld.pid
+pid-file			= /run/mysqld/mysqld.pid
 
 # The socket file specifies the location of the socket file, which is used
 # for interprocess communication (IPC) between the MariaDB server and client
 # programs.
 
-socket				= /etc/mysqld/mysqld.sock
+socket				= /run/mysqld/mysqld.sock
 
 # The port number specifies the port number that the MariaDB server will
 # listen on for incoming connections.
@@ -42,10 +48,13 @@ datadir				= /var/lib/mysql
 basedir				= /usr
 tmpdir				= /tmp
 
+bind-address		= 0.0.0.0
 
 ###
 # Log configurations
 ###
+
+log_error			= /var/log/mysql/error.log
 
 # the name the logs use when refering to mariadb
 
@@ -62,12 +71,16 @@ general-log			= 1
 # slow queries and optimize them to improve the performance of the server.
 # 0 = disabled, 1 = enabled
 
-log-slow-queries	= 1
+# log-slow-queries	= 1
 
 # The "long_query_time" option specifies the number of seconds that a query must
 # take to execute in order to be considered slow and be logged in the slow query log.
 
-long_query_time		= 2
+# long_query_time			= 2
+query_cache_size		= 16M
+character-set-server	= utf8mb4
+collation-server		= utf8mb4_general_ci
+
 
 
 ###
@@ -87,4 +100,4 @@ port				= 3306
 # The socket file specifies the location of the socket file that client
 # programs will use to connect to the MariaDB server.
 
-socket				= /etc/mysqld/mysqld.sock
+socket				= /run/mysqld/mysqld.sock

@@ -9,7 +9,7 @@
 
 <div align=center>
   <h2>
-    Step by step
+    Commands and other info
   </h2>
 </div>
 
@@ -20,6 +20,13 @@
   - [x] docker
   - [x] docker-compose
 
+<h4>
+  Makefile commands:
+</h4>
+
+  - ```make``` or ```make up``` (will create the containers and set everything up)
+  - ```make down``` (will delete all the containers leaving only the volumes)
+  - ```make delete``` (does the same as ```make down``` but also deletes all volumes)
 
 ---
 

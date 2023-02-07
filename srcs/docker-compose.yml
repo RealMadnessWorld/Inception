@@ -8,10 +8,12 @@ services:
     build: ./nginx
     image: ft_nginx
     ports:
-      - 8080:80
-    restart: on-failure
+      - 443:443
+    restart: always
     networks: 
       - "inception-network"
+    volumes:
+      - wordpress_vol:/var/www/jarsenio.com
 
 # wordpress image setup
   wordpress:
@@ -19,29 +21,33 @@ services:
     build: ./wordpress
     image: ft_wordpress
     # ports:
-    #   - 
-    restart: on-failure
+    #   - 9000:9000
+    restart: always
     networks:
       - inception-network
+    volumes:
+      - wordpress_vol:/var/www/jarsenio.com
 
 # Mariadb image setup
   mariadb:
     container_name: ft_mariadb
     build: ./mariadb
     image: ft_mariadb
-    ports:
-      - 3306:3306
-    # restart: on-failure
+    # ports:
+    #   - 3306:3306
+    restart: always
     networks:
       - inception-network
     volumes:
-      - mariadb_vol:/var/lib/db
+      - mariadb_vol:/var/lib/mysql
+
+    # this environment variables are the container variables
+    # so that you can call them inside the container
     environment:
       MARIADB_ROOT_PASSWORD: $MARIADB_ROOT_PASSWORD
       MARIADB_USER: $MARIADB_USER
       MARIADB_PASSWORD: $MARIADB_PASSWORD
       MARIADB_DATABASE: $MARIADB_DATABASE
-    # user: flirt
 
 volumes:
   mariadb_vol:
@@ -50,7 +56,7 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/${USER}/data
+      device: /home/${USER}/data/mariadb_volume
 
   wordpress_vol:
     name: wordpress_volume
@@ -58,8 +64,8 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /home/${USER}/data
+      device: /home/${USER}/data/wordpress_volume
 
 networks:
   inception-network:
-    driver: bridge
+    # driver: bridge
