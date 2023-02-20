@@ -16,13 +16,14 @@ COPY /config/ /var/www/jarsenio.com/wordpress/
 RUN chown -R www-data:www-data /var/www/jarsenio.com
 
 COPY /config/www.conf /etc/php/7.3/fpm/pool.d/www.conf
+RUN echo "<?php\nphpinfo();\n?>" > /var/www/jarsenio.com/info.php
+
 # COPY /config/index.html /usr/share/wordpress/jarsenio.com
 WORKDIR /tmp/
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
-RUN mv wp-cli.phar /usr/local/bin/wp-cli
+RUN mv wp-cli.phar /usr/local/bin/wp
 
-RUN echo "<?php\nphpinfo();\n?>" > /var/www/jarsenio.com/info.php
 COPY /tools/entrypoint.sh /tmp/
 
 ENTRYPOINT ["bash", "/tmp/entrypoint.sh" ]

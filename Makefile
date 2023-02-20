@@ -42,15 +42,17 @@ delete: down del_vols
 
 re: down up
 
+delre: delete up
+
 setup_vols:
-	@sudo mkdir -p /home/flirt/data/mariadb_volume
-	@sudo mkdir -p /home/flirt/data/wordpress_volume
+	@sudo mkdir -p /home/${USER}/data/mariadb_volume
+	@sudo mkdir -p /home/${USER}/data/wordpress_volume
 	@echo volumes created
 
 del_vols:
-	@sudo rm -rf /home/flirt/data/mariadb_volume
-	@sudo rm -rf /home/flirt/data/wordpress_volume
-	@sudo rm -rf /home/flirt/data
+	@sudo rm -rf /home/${USER}/data/mariadb_volume
+	@sudo rm -rf /home/${USER}/data/wordpress_volume
+	@sudo rm -rf /home/${USER}/data
 	docker volume rm `docker volume ls -q` || true
 	docker rmi -f `docker image ls -qa` || true
 	docker rm `docker ps -qa` || true

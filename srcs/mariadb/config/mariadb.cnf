@@ -48,7 +48,7 @@ datadir				= /var/lib/mysql
 basedir				= /usr
 tmpdir				= /tmp
 
-bind-address		= 0.0.0.0
+bind-address		= localhost
 
 ###
 # Log configurations
@@ -81,7 +81,7 @@ query_cache_size		= 16M
 character-set-server	= utf8mb4
 collation-server		= utf8mb4_general_ci
 
-
+# skip-grant-tables
 
 ###
 # Client configurations

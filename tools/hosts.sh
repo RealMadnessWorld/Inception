@@ -29,9 +29,9 @@ if [ $1 == "add" ]
 		sudo sed -i '/42.fr/d' /etc/hosts
 
 		# Adds to the first line of the hosts file what comes after "1i"
-		sudo sed -i '1i'$SERVER_IP' '$SUDO_USER'.42.fr' /etc/hosts
-		sudo sed -i '1i'$SERVER_IP' www.'$SUDO_USER'.42.fr' /etc/hosts
-		sudo sed -i '1i'$SERVER_IP' https://www.'$SUDO_USER'.42.fr' /etc/hosts
+		sudo sed -i '1i'$SERVER_IP' '$USER_LOGIN'.42.fr' /etc/hosts
+		sudo sed -i '1i'$SERVER_IP' www.'$USER_LOGIN'.42.fr' /etc/hosts
+		sudo sed -i '1i'$SERVER_IP' https://www.'$USER_LOGIN'.42.fr' /etc/hosts
 fi
 
 if [ $1 == "delete" ]
