@@ -14,7 +14,7 @@ endif
 
 all:	up
 
-up: setup_vols logs
+up: setup_vols
 	@if [ -f ./srcs/.env ]; then \
 			docker network create inception-network; \
 			cd srcs && docker-compose up --build -d; \
@@ -42,7 +42,7 @@ delete: down del_vols
 
 re: down up
 
-delre: delete up
+delre: delete up logs
 
 setup_vols:
 	@sudo mkdir -p /home/${USER}/data/mariadb_volume

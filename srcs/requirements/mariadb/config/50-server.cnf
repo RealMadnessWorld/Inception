@@ -13,7 +13,7 @@
 #
 # * Basic Settings
 #
-user                    = mysql
+user                    = root
 pid-file                = /run/mysqld/mysqld.pid
 socket                  = /run/mysqld/mysqld.sock
 port                    = 3306
@@ -120,6 +120,11 @@ collation-server      = utf8mb4_general_ci
 # See https://mariadb.com/kb/en/unix_socket-authentication-plugin/
 
 # this is only for embedded server
+
+[client]
+
+socket = /var/run/mysqld/mysqld.sock
+
 [embedded]
 
 # This group is only read by MariaDB servers, not by MySQL.

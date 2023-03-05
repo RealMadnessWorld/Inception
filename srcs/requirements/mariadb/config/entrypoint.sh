@@ -1,7 +1,8 @@
 #!/bin/bash
 
-mysql_install_db;
 service mysql start;
+
+sleep 5;
 
 # Configure database
 if [ -f /var/lib/mysql/${MARIADB_DATABASE} ]; then
@@ -30,7 +31,11 @@ else
 	mariadb -uroot -p${MARIADB_PASSWORD} -e "FLUSH PRIVILEGES;"
 fi
 
-#SELECT User, Password, Plugin FROM mysql.user;
+# TODO -> SELECT User, Password, Plugin FROM mysql.user;
+# show databases;
+# use testdb
+# show tables
+# select * from todo_list
 
 # service mysql stop;
 mysqladmin -u root -p${MARIADB_PASSWORD} shutdown;

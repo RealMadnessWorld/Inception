@@ -8,4 +8,6 @@ RUN apt-get install procps -yq
 COPY ./config/entrypoint.sh /tmp/
 COPY ./config/50-server.cnf /etc/mysql/mariadb.conf.d/
 
+RUN mysql_install_db;
+
 CMD ["bash", "/tmp/entrypoint.sh"]
