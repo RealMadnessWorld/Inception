@@ -4,12 +4,12 @@ services:
 
 # Nginx image setup
   nginx:
-    container_name: ft_nginx
-    build: ./nginx
-    image: ft_nginx
+    container_name: nginx
+    build: ./requirements/nginx
+    restart: on-failure
+    image: nginx
     ports:
       - 443:443
-    restart: always
     networks: 
       - "inception-network"
     volumes:
@@ -17,12 +17,12 @@ services:
 
 # wordpress image setup
   wordpress:
-    container_name: ft_wordpress
-    build: ./wordpress
-    image: ft_wordpress
-    # ports:
-    #   - 9000:9000
-    restart: always
+    container_name: wordpress
+    build: ./requirements/wordpress
+    image: wordpress
+    restart: on-failure
+    env_file:
+      - ".env"
     networks:
       - inception-network
     volumes:
@@ -30,12 +30,10 @@ services:
 
 # Mariadb image setup
   mariadb:
-    container_name: ft_mariadb
-    build: ./mariadb
-    image: ft_mariadb
-    # ports:
-    #   - 3306:3306
-    restart: always
+    container_name: mariadb
+    build: ./requirements/mariadb
+    image: mariadb
+    restart: on-failure
     networks:
       - inception-network
     volumes:
@@ -44,10 +42,9 @@ services:
     # this environment variables are the container variables
     # so that you can call them inside the container
     environment:
-      MARIADB_ROOT_PASSWORD: $MARIADB_ROOT_PASSWORD
-      MARIADB_USER: $MARIADB_USER
-      MARIADB_PASSWORD: $MARIADB_PASSWORD
-      MARIADB_DATABASE: $MARIADB_DATABASE
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
 
 volumes:
   mariadb_vol:

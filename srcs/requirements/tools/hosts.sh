@@ -22,7 +22,7 @@ if [ $1 == "add" ]
 	then
 
 		# Gets the ip address of the nginx container and saves it in a variable
-		SERVER_IP=$(echo -n `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ft_nginx`)
+		SERVER_IP=$(echo -n `docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nginx`)
 
 		echo "Server ip address: $SERVER_IP"
 		# Deletes any line of the hosts file containing "42.fr"

@@ -18,7 +18,7 @@ up: setup_vols
 	@if [ -f ./srcs/.env ]; then \
 			docker network create inception-network; \
 			cd srcs && docker-compose up --build -d; \
-			cd ../tools && sudo bash hosts.sh add; \
+			cd requirements/tools && sudo bash hosts.sh add; \
 			echo "$(_GREEN)-------------------------------------------$(_RESET)"; \
 			echo "$(_GREEN)-------------------------------------------$(_RESET)"; \
 			echo "$(_GREEN)-----------------Docker up-----------------$(_RESET)"; \
@@ -29,9 +29,9 @@ up: setup_vols
 	fi
 
 down:
-	@docker network rm inception-network
-	@cd srcs && docker-compose down --rmi all
-	@cd tools && sudo bash hosts.sh delete
+	@docker network rm inception-network || true
+	@cd srcs && docker-compose down --rmi all || true
+	@cd srcs/requirements/tools && sudo bash hosts.sh delete || true
 	@echo "$(_RED)-------------------------------------------$(_RESET)"
 	@echo "$(_RED)-------------------------------------------$(_RESET)"
 	@echo "$(_RED)----------------Docker down----------------$(_RESET)"
@@ -59,10 +59,13 @@ del_vols:
 	@echo volumes deleted
 
 maria:
-	@docker exec -it ft_mariadb bash
+	@docker exec -it mariadb bash
 
 nginx:
-	@docker exec -it ft_nginx bash
+	@docker exec -it nginx bash
 
 wordpress:
-	@docker exec -it ft_wordpress bash
+	@docker exec -it wordpress bash
+
+logs:
+	docker-compose --project-directory srcs/ logs --follow
