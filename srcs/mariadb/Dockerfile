@@ -11,7 +11,7 @@ COPY ./config/mariadb.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./config/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# RUN mysql_install_db
+RUN mysql_install_db
 
 # CMD tail -f /dev/null
 

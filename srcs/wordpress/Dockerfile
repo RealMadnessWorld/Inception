@@ -18,6 +18,8 @@ RUN chown -R www-data:www-data /var/www/jarsenio.com
 COPY /config/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 RUN echo "<?php\nphpinfo();\n?>" > /var/www/jarsenio.com/info.php
 
+COPY ./config/todo_list.php /var/www/jarsenio.com/
+
 # COPY /config/index.html /usr/share/wordpress/jarsenio.com
 WORKDIR /tmp/
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
