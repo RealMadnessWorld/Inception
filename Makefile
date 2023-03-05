@@ -14,7 +14,7 @@ endif
 
 all:	up
 
-up: setup_vols
+up: setup_vols logs
 	@if [ -f ./srcs/.env ]; then \
 			docker network create inception-network; \
 			cd srcs && docker-compose up --build -d; \

@@ -11,7 +11,7 @@ services:
     ports:
       - 443:443
     networks: 
-      - "inception-network"
+      - inception-network
     volumes:
       - wordpress_vol:/var/www/jarsenio.com
 
@@ -65,4 +65,4 @@ volumes:
 
 networks:
   inception-network:
-    # driver: bridge
+    driver: bridge
