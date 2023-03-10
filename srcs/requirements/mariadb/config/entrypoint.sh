@@ -27,8 +27,8 @@ else
 	mariadb -u root -e "INSERT INTO ${MARIADB_DATABASE}.todo_list (content) VALUES ('one more task');"
 
 	mariadb -uroot -p${MARIADB_PASSWORD} -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${MARIADB_PASSWORD}');"
-	# mariadb -uroot -p${MARIADB_PASSWORD} -e "UPDATE mysql.user SET plugin = 'auth_socket' WHERE user = 'root';"
 	mariadb -uroot -p${MARIADB_PASSWORD} -e "FLUSH PRIVILEGES;"
+	echo "Updated root password"
 fi
 
 # TODO -> SELECT User, Password, Plugin FROM mysql.user;
@@ -38,5 +38,7 @@ fi
 # select * from todo_list
 
 # service mysql stop;
+echo "Starting mysqld"
 mysqladmin -u root -p${MARIADB_PASSWORD} shutdown;
 mysqld;
+echo "Mysqld failed to start!"

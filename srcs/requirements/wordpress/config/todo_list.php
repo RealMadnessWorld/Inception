@@ -1,8 +1,8 @@
 <?php
-$user = "jarsenio";
-$password = "jarsenio";
-$database = "testdb";
-$host = "mariadb";
+$user = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
+$database = getenv('DB_NAME');
+$host = getenv('DB_HOST');
 $table = "todo_list";
 
 try {
