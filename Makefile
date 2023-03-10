@@ -53,9 +53,9 @@ del_vols:
 	@sudo rm -rf /home/${USER}/data/mariadb_volume
 	@sudo rm -rf /home/${USER}/data/wordpress_volume
 	@sudo rm -rf /home/${USER}/data
-	docker volume rm `docker volume ls -q` || true
-	docker rmi -f `docker image ls -qa` || true
-	docker rm `docker ps -qa` || true
+	@docker volume rm `docker volume ls -q` || true
+	@docker rmi -f `docker image ls -qa` || true
+	@docker rm `docker ps -qa` || true
 	@echo volumes deleted
 
 maria:

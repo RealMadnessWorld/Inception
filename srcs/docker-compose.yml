@@ -2,32 +2,6 @@ version: '3.7'
 
 services:
 
-# Nginx image setup
-  nginx:
-    container_name: nginx
-    build: ./requirements/nginx
-    restart: on-failure
-    image: nginx
-    ports:
-      - 443:443
-    networks: 
-      - inception-network
-    volumes:
-      - wordpress_vol:/var/www/jarsenio.com
-
-# wordpress image setup
-  wordpress:
-    container_name: wordpress
-    build: ./requirements/wordpress
-    image: wordpress
-    restart: on-failure
-    env_file:
-      - ".env"
-    networks:
-      - inception-network
-    volumes:
-      - wordpress_vol:/var/www/jarsenio.com
-
 # Mariadb image setup
   mariadb:
     container_name: mariadb
@@ -45,6 +19,32 @@ services:
       MARIADB_USER: ${MARIADB_USER}
       MARIADB_PASSWORD: ${MARIADB_PASSWORD}
       MARIADB_DATABASE: ${MARIADB_DATABASE}
+
+# wordpress image setup
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    image: wordpress
+    restart: on-failure
+    env_file:
+      - ".env"
+    networks:
+      - inception-network
+    volumes:
+      - wordpress_vol:/var/www/jarsenio.com
+
+# Nginx image setup
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+    restart: on-failure
+    image: nginx
+    ports:
+      - 443:443
+    networks: 
+      - inception-network
+    volumes:
+      - wordpress_vol:/var/www/jarsenio.com
 
 volumes:
   mariadb_vol:

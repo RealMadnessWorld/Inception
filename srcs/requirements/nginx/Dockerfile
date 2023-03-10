@@ -12,6 +12,7 @@ RUN openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/n
 -subj "/C=PT/ST=Lisboa/L=Lisboa/O=42Lisboa/OU=Inception/CN=www.jarsenio.42.fr"
 
 # COPY ./config/nginx.conf /etc/nginx/
+RUN sleep 10
 COPY ./config/site.conf /etc/nginx/sites-available/jarsenio.conf
 RUN ln -s /etc/nginx/sites-available/jarsenio.conf /etc/nginx/sites-enabled/
 
