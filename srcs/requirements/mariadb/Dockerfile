@@ -7,6 +7,7 @@ RUN apt-get install procps -yq
 
 COPY ./config/entrypoint.sh /tmp/
 COPY ./config/50-server.cnf /etc/mysql/mariadb.conf.d/
+COPY ./config/wordpress.sql /tmp/
 
 RUN mysql_install_db;
 

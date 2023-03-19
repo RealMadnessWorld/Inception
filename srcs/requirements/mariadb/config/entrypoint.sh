@@ -20,11 +20,13 @@ else
 	mariadb -u root -e "FLUSH PRIVILEGES;"
 	echo "${MARIADB_DATABASE} created database"
 	
-	mariadb -u root -e "CREATE TABLE ${MARIADB_DATABASE}.todo_list (item_id INT AUTO_INCREMENT, content VARCHAR(255), PRIMARY KEY(item_id));"
-	mariadb -u root -e "INSERT INTO ${MARIADB_DATABASE}.todo_list (content) VALUES ('My first task, yay');"
-	mariadb -u root -e "INSERT INTO ${MARIADB_DATABASE}.todo_list (content) VALUES ('Second task, gimme more');"
-	mariadb -u root -e "INSERT INTO ${MARIADB_DATABASE}.todo_list (content) VALUES ('Last task i promise');"
-	mariadb -u root -e "INSERT INTO ${MARIADB_DATABASE}.todo_list (content) VALUES ('one more task');"
+	# mariadb -u root -e "CREATE TABLE ${MARIADB_DATABASE}.todo_list (item_id INT AUTO_INCREMENT, content VARCHAR(255), PRIMARY KEY(item_id));"
+	# mariadb -u root -e "INSERT INTO ${MARIADB_DATABASE}.todo_list (content) VALUES ('My first task, yay');"
+	# mariadb -u root -e "INSERT INTO ${MARIADB_DATABASE}.todo_list (content) VALUES ('Second task, gimme more');"
+	# mariadb -u root -e "INSERT INTO ${MARIADB_DATABASE}.todo_list (content) VALUES ('Last task i promise');"
+	# mariadb -u root -e "INSERT INTO ${MARIADB_DATABASE}.todo_list (content) VALUES ('one more task');"
+
+	mysql -u ${MARIADB_USER} -p${MARIADB_PASSWORD} ${MARIADB_DATABASE} < /tmp/wordpress.sql
 
 	mariadb -uroot -p${MARIADB_PASSWORD} -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${MARIADB_PASSWORD}');"
 	mariadb -uroot -p${MARIADB_PASSWORD} -e "FLUSH PRIVILEGES;"
