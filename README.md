@@ -42,3 +42,9 @@
 
 [Docker-compose build command](https://docs.docker.com/compose/compose-file/build/) (so that you can automatically create an image through a Dockerfile)
 
+
+TODO:
+	- Remove port 80
+	- Check for open ports
+	- docker network explanation
+	- Everything starting on Mariadb part
