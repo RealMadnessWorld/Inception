@@ -5,7 +5,7 @@ service mysql start;
 sleep 5;
 
 # Configure database
-if [ -f /var/lib/mysql/${MARIADB_DATABASE} ]; then
+if [ -d "/var/lib/mysql/${MARIADB_DATABASE}" ]; then
 	echo "${MARIADB_DATABASE} already created"
 else
 	# creating database
