@@ -62,6 +62,6 @@ The required services of the Inception App are `NGINX`, `MariaDB` and `WordPress
 ---
 
 <div align="center">
-	<img src="https://user-images.githubusercontent.com/76601093/193692098-d4b16956-1dab-40b8-9aae-31b254efc5ee.jpg" width=340> <img src="https://github.com/RealMadnessWorld/Inception/assets/76601093/5413c416-7e1a-48f2-8bda-70fbbb12a87b">
+	<img src="https://user-images.githubusercontent.com/76601093/193692098-d4b16956-1dab-40b8-9aae-31b254efc5ee.jpg" width=340> <img src="https://github.com/RealMadnessWorld/Inception/assets/76601093/b9621474-0a34-4e08-be66-426ab97e8232">
 
 </div>
