@@ -29,7 +29,7 @@ The required services of the Inception App are `NGINX`, `MariaDB` and `WordPress
 <img src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original-wordmark.svg" title="Docker" alt="Docker" width="60" height="60"/>&nbsp;
 <img src="https://github.com/devicons/devicon/blob/master/icons/nginx/nginx-original.svg" title="NGINX" alt="NGINX" width="60" height="60"/>&nbsp;
 <img src="https://www.vectorlogo.zone/logos/mariadb/mariadb-icon.svg" title="MariaDB" alt="MariaDB" width="60" height="60"/>
-<img src="https://github.com/RealMadnessWorld/Inception/assets/76601093/e97db32a-604c-4b93-9b1f-948d28aae9b8" title="Wordpress" alt="Wordpress" width="60" height="60"/>&nbsp;
+<img src="https://github.com/RealMadnessWorld/Inception/assets/76601093/9cffa414-fb85-4781-814b-5cd5681c02fc" title="Wordpress" alt="Wordpress" width="60" height="60"/>&nbsp;
 </div>
 
 ---
