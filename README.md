@@ -2,24 +2,55 @@
   <h1>
     Inception
   </h1>
-  <p> Project to create various docker containers </p>
+	
+> The purpose of the infrastructure is to have a running WordPress site. A WordPress site needs to have a database, for that the app uses MariaDB
+> as the database management system. NGINX will serve as a reverse proxy server for WordPress requests.
 </div>
 
 ---
 
 <div align=center>
   <h2>
-    Commands and other info
+    Description
   </h2>
 </div>
 
-<h4>
-  Requirements:
-</h4>
+The main goal of this project is to build a small infrastructure composed of different services under specific rules using Docker.<br>
+It consists of creating a Docker app - by building custom Docker images for each service and managing them with the docker compose command.<br>
+The required services of the Inception App are `NGINX`, `MariaDB` and `WordPress`.
 
-  - [x] docker
-  - [x] docker-compose
+---
 
+<div align=center>
+  <h2>
+    Technologies
+  </h2>
+
+<img src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original-wordmark.svg" title="Docker" alt="Docker" width="60" height="60"/>&nbsp;
+<img src="https://github.com/devicons/devicon/blob/master/icons/nginx/nginx-original.svg" title="NGINX" alt="NGINX" width="60" height="60"/>&nbsp;
+<img src="https://www.vectorlogo.zone/logos/mariadb/mariadb-icon.svg" title="MariaDB" alt="MariaDB" width="60" height="60"/>
+<img src="https://github.com/RealMadnessWorld/Inception/assets/76601093/e97db32a-604c-4b93-9b1f-948d28aae9b8" title="Wordpress" alt="Wordpress" width="60" height="60"/>&nbsp;
+</div>
+
+---
+
+<div align=center>
+  <h2>
+	How to run
+  </h2>
+</div>
+
+- Install Docker: [install Docker engine official docs](https://docs.docker.com/engine/install/)  
+- Clone this repository:
+
+    	git clone https://github.com/RealMadnessWorld/Inception
+- Navigate to Inception: 
+
+		cd Inception
+- Write a `.env` file like the one on srcs/.env.example to use your very own configurations  
+- Run `make` with sudo privileges:
+
+  		sudo make
 <h4>
   Makefile commands:
 </h4>
@@ -30,21 +61,7 @@
 
 ---
 
-<h2 align=center>
-  Resources
-</h2>
+<div align="center">
+	<img src="https://user-images.githubusercontent.com/76601093/193692098-d4b16956-1dab-40b8-9aae-31b254efc5ee.jpg" width=340> <img src="https://github.com/RealMadnessWorld/Inception/assets/76601093/5413c416-7e1a-48f2-8bda-70fbbb12a87b">
 
-[Create a nginx docker container](https://programatically.com/how-to-create-a-custom-dockerfile-of-nginx/)
-
-[Create a self-signed TLS certificate](https://www.linode.com/docs/guides/create-a-self-signed-tls-certificate/)
-
-[mlanca-c's wiki](https://github.com/mlanca-c/inception/wiki) (Best place to understand how this project works, everything is explained in detail there! Also check out [mlanca-c's github](https://github.com/mlanca-c)!)
-
-[Docker-compose build command](https://docs.docker.com/compose/compose-file/build/) (so that you can automatically create an image through a Dockerfile)
-
-
-TODO:
-	- Remove port 80
-	- Check for open ports
-	- docker network explanation
-	- Everything starting on Mariadb part
+</div>
